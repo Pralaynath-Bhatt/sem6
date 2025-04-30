@@ -1,0 +1,17 @@
+%{ 
+#include <stdio.h> 
+%} 
+%% 
+.*abb.* { printf("\nValid Token: %s (Contains 'abb')", yytext); } 
+[a-zA-Z0-9]+ { printf("\nInvalid Token: %s", yytext); } 
+[ \t\n] { /* Ignore whitespace */ } 
+. { printf("\nUnknown Token: %s", yytext); } 
+%% 
+int main() { 
+printf("Enter input string:\n"); 
+yylex(); 
+return 0; 
+} 
+int yywrap() { 
+return 1; 
+} 
